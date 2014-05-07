@@ -79,7 +79,13 @@ var commander = sacloud.createCommander({
 /**
  * Complete
 **/
-if (!isWindows) commander.complete();
+if (!isWindows) {
+	try {
+		commander.complete();
+	} catch (e) {
+		if (opt.verbose) console.log(e);
+	}
+}
 
 /**
  * Info
